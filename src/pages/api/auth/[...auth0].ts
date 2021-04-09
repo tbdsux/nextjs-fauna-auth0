@@ -19,6 +19,7 @@ export default handleAuth({
   },
   async logout(req, res) {
     try {
+      // NOTE: I am not sure about this process, if this is right
       // invalidate token first
       const { user } = getSession(req, res);
       const u = new UserModel();

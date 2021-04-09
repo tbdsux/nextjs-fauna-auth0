@@ -16,7 +16,17 @@ export default function Index() {
           <hr className="my-8" />
 
           {user ? (
-            <div>{JSON.stringify(user)}</div>
+            <>
+              <div>{JSON.stringify(user)}</div>
+              <div className="mt-8">
+                <LinkButton
+                  href="/api/auth/logout"
+                  className="hover:underline p-2 bg-gray-500 text-white hover:bg-gray-600"
+                >
+                  Log Out
+                </LinkButton>
+              </div>
+            </>
           ) : (
             <div className="inline-flex">
               <LinkButton
