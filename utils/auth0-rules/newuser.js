@@ -1,4 +1,9 @@
 function newUser(user, context, callback) {
+  // CHANGE THIS WITH THE NAME OF YOUR APP
+  if (context.clientName !== 'NextJS-Fauna-Auth0-Demo') {
+    return callback(null, user, context);
+  }
+
   const fauna = require('faunadb');
 
   const { query } = fauna;
