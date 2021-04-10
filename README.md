@@ -4,6 +4,10 @@ This is just a starter template for working with a fullstack app with Nextjs as 
 
 #### NOTE: I am not sure if this is the best way in configuring this app, if there is a better solution, you can push a `PR` and I will gladly accept it.
 
+## Deploy
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2FTheBoringDude%2Fnextjs-fauna-auth0.git&env=AUTH0_SECRET,AUTH0_BASE_URL,AUTH0_ISSUER_BASE_URL,AUTH0_CLIENT_ID,AUTH0_CLIENT_SECRET,FAUNADB_SECRET_KEY)
+
 ## Development
 
 - Install required dependencies
