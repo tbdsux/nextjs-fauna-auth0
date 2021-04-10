@@ -1,5 +1,5 @@
 import { getSession, handleAuth, handleCallback, handleLogout } from '@auth0/nextjs-auth0';
-import { UserModel } from '@lib/models/user-model';
+import { UserModel } from '@fauna/models/user-model';
 
 const afterCallback = async (req, res, session, state) => {
   const user = new UserModel();

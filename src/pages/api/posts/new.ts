@@ -1,5 +1,5 @@
-import { getAccessToken, getSession, withApiAuthRequired } from '@auth0/nextjs-auth0';
-import { Posts } from '@lib/models/posts';
+import { getSession, withApiAuthRequired } from '@auth0/nextjs-auth0';
+import { Posts } from '@fauna/models/posts';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 const api = withApiAuthRequired(async (req: NextApiRequest, res: NextApiResponse) => {
