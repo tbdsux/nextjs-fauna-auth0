@@ -28,6 +28,14 @@ This is just a starter template for working with a fullstack app with Nextjs as 
 
 The scripts fodler contains the setup code.
 
+### Auth0 Configuration
+
+The `utils/auth0-rules` is a rule for `Auth0` that you can configure so that new users can be automatically registered or created to the database.
+
+- Create an empty rule in your `Auth0` app.
+- Copy and paste the contents ([/utils/auth0-rules/newuser.js](./utils/auth0-rules/newuser.js)) to the provided editor and save.
+- You can configure it the way you want.
+
 #### You need to set your `FAUNADB_SECRET_KEY` in your `.env.local` file or your process environment.
 
 ```
