@@ -46,6 +46,14 @@ The `utils/auth0-rules` is a rule for `Auth0` that you can configure so that new
 yarn setup:db
 ```
 
+### Cypress Testing
+
+- Create a Test User in your app and the following to your `Environment Variables`
+  ```
+  TEST_USER_EMAIL= #testusermail
+  TEST_USER_PASSWORD= #testuserpassword
+  ```
+
 ### Deps
 
 - NextJS
