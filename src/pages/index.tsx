@@ -20,6 +20,7 @@ export default function Index() {
               <div>{JSON.stringify(user)}</div>
               <div className="mt-8">
                 <LinkButton
+                  data-testid="btn-logout"
                   href="/api/auth/logout"
                   className="hover:underline p-2 bg-gray-500 text-white hover:bg-gray-600"
                 >
@@ -30,6 +31,7 @@ export default function Index() {
           ) : (
             <div className="inline-flex">
               <LinkButton
+                data-testid="btn-login"
                 href="/api/auth/login"
                 className="text-lg bg-gray-500 hover:bg-gray-600 text-white py-2 px-4"
               >
