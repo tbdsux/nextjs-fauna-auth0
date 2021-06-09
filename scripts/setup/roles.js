@@ -1,9 +1,9 @@
-import faunadb from 'faunadb';
-import { CreateOrUpdateRole } from './fql.js';
+const faunadb = require('faunadb');
+const { CreateOrUpdateRole } = require('./fql.js');
 
 const { Collection, Index } = faunadb.query;
 
-export const CreateNormalUserRole = CreateOrUpdateRole({
+const CreateNormalUserRole = CreateOrUpdateRole({
   name: 'NormalUser',
   privileges: [
     {
@@ -25,3 +25,10 @@ export const CreateNormalUserRole = CreateOrUpdateRole({
     }
   ]
 });
+async function createRole(client) {
+  return await client.query(CreateNormalUserRole);
+}
+
+module.exports = {
+  createRole
+};

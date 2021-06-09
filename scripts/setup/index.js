@@ -1,7 +1,7 @@
-import { FAUNA_SECRET, setupClient, executeFQL } from './fql.js';
-import { handleSetupError } from './helpers.js';
-import { createCollections, createIndex } from './collections.js';
-import { CreateNormalUserRole } from './roles.js';
+const { FAUNA_SECRET, getClient } = require('./fql.js');
+const { handleSetupError } = require('./helpers.js');
+const { createCollections, createIndex } = require('./collections.js');
+const { createRole } = require('./roles.js');
 
 async function setupDatabase() {
   if (!FAUNA_SECRET) {
@@ -12,13 +12,16 @@ async function setupDatabase() {
   }
 
   // create collection
-  const cols = await handleSetupError(createCollections(setupClient), 'user collection');
-  if (cols) {
-    await handleSetupError(createIndex(setupClient), 'user index', 'user index');
-  }
+  await handleSetupError(createCollections(getClient(FAUNA_SECRET)), 'user collection').then(
+    async (d) => {
+      if (d) {
+        await handleSetupError(createIndex(getClient(FAUNA_SECRET)), 'user index');
+      }
+    }
+  );
 
   // create the role
-  await executeFQL(setupClient, CreateNormalUserRole, 'normal user role');
+  await handleSetupError(createRole(getClient(FAUNA_SECRET)), 'normal user role');
 }
 
 setupDatabase();

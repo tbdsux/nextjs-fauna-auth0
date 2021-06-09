@@ -1,7 +1,6 @@
-import faunadb from 'faunadb';
-import { IfNotExists } from './fql.js';
+const faunadb = require('faunadb');
 
-const { Collection, CreateIndex, CreateCollection, Index } = faunadb.query;
+const { Collection, CreateIndex, CreateCollection, Index, If, Exists } = faunadb.query;
 
 // Create `user_by_id` index
 const CreateUsersByIdIndex = CreateIndex({
@@ -15,12 +14,17 @@ const CreateUsersByIdIndex = CreateIndex({
     }
   ]
 });
-export async function createIndex(client) {
-  return await client.query(IfNotExists(Index('user_by_id'), CreateUsersByIdIndex));
+async function createIndex(client) {
+  return await client.query(If(Exists(Index('user_by_id')), false, CreateUsersByIdIndex));
 }
 
 // Create the `users` collection
 const CreateUsersCollection = CreateCollection({ name: 'users' });
-export async function createCollections(client) {
-  return await client.query(IfNotExists(Collection('users'), CreateUsersCollection));
+async function createCollections(client) {
+  return await client.query(If(Exists(Collection('users')), false, CreateUsersCollection));
 }
+
+module.exports = {
+  createIndex,
+  createCollections
+};
