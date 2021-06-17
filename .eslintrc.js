@@ -13,10 +13,6 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['cypress/**/*.ts'],
-      extends: ['plugin:cypress/recommended']
-    },
-    {
       files: ['src/**/*.ts', 'src/**/*.tsx'],
       parser: '@typescript-eslint/parser',
       settings: {
@@ -34,23 +30,15 @@ module.exports = {
         'plugin:@typescript-eslint/recommended',
         'plugin:react/recommended',
         'plugin:react-hooks/recommended',
-        // 'plugin:jsx-a11y/recommended',
-        'plugin:prettier/recommended'
+        'plugin:prettier/recommended',
+        'plugin:@next/next/recommended'
       ],
       rules: {
         'prettier/prettier': ['error', {}, { usePrettierrc: true }],
         'react/prop-types': 'off',
         'react/react-in-jsx-scope': 'off',
-        // 'jsx-11y/anchor-is-valid': 'off', (NOTE: Until Next.js solves this, it won't be enabled)
         '@typescript-eslint/no-unused-vars': ['error'],
         '@typescript-eslint/explicit-module-boundary-types': 'off'
-        // '@typescript-eslint/explicit-function-return-type': [
-        //   'warn',
-        //   {
-        //     allowExpressions: true,
-        //     allowConciseArrowFunctionExpressionsStartingWithVoid: true
-        //   }
-        // ]
       }
     }
   ]
